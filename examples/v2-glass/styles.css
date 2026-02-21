@@ -1,0 +1,32 @@
+:root { --bg:#0e1322; --ink:#eef3ff; --line:rgba(255,255,255,.2); }
+*{box-sizing:border-box;margin:0}
+body{
+  font-family:Sora,sans-serif;
+  background: radial-gradient(circle at 15% 20%, #244a83 0%, transparent 35%),
+              radial-gradient(circle at 80% 80%, #0faea3 0%, transparent 30%),
+              var(--bg);
+  min-height:100vh;
+  color:var(--ink);
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+}
+.blob{position:fixed;filter:blur(70px);opacity:.45;border-radius:50%}
+.one{width:320px;height:320px;background:#4c67ff;left:-80px;top:-50px}
+.two{width:280px;height:280px;background:#00d5a7;right:-70px;bottom:-60px}
+.panel{
+  width:min(980px,92vw);
+  border:1px solid var(--line);
+  border-radius:26px;
+  background:rgba(255,255,255,.08);
+  backdrop-filter: blur(15px);
+  padding:3rem;
+}
+.tag{font-size:.85rem;opacity:.85;margin-bottom:1rem}
+h1{font-size:clamp(2rem,5.5vw,4.1rem);line-height:1.02;max-width:14ch}
+p{margin-top:1rem;max-width:58ch;opacity:.9}
+.grid{margin-top:2rem;display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem}
+article{border:1px solid var(--line);border-radius:16px;padding:1rem;background:rgba(255,255,255,.06)}
+h2{font-size:1rem}
+article p{font-size:.93rem;margin-top:.5rem}
+@media (max-width:780px){.panel{padding:1.4rem}.grid{grid-template-columns:1fr}}

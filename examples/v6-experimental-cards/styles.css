@@ -1,0 +1,31 @@
+:root { --bg:#f0f0f0; --ink:#111; --accent:#ff4d00; }
+* { box-sizing:border-box; margin:0; }
+body { font-family: Outfit, sans-serif; background: var(--bg); color: var(--ink); padding: 1.2rem; }
+header { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:1rem; }
+header h1 { font-size: clamp(2rem,7vw,4rem); letter-spacing:-.02em; }
+header p { font-family:"Space Mono",monospace; font-size:.85rem; }
+.masonry {
+  display:grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: .8rem;
+}
+.card {
+  grid-column: span 4;
+  min-height: 170px;
+  border: 2px solid var(--ink);
+  background: #fff;
+  padding: 1rem;
+  border-radius: 14px;
+  box-shadow: 0 10px 0 #cfcfcf;
+  transition: transform .2s ease;
+}
+.card:hover { transform: translateY(-4px); }
+.wide { grid-column: span 8; min-height: 220px; }
+.tall { min-height: 280px; }
+.accent { background: var(--accent); color: #fff; }
+h2 { font-size: clamp(1.5rem,3vw,2.5rem); line-height:1; max-width: 16ch; }
+h3 { font-size: 1.3rem; }
+p { margin-top: .7rem; max-width: 40ch; }
+@media (max-width:920px) {
+  .card, .wide { grid-column: span 12; min-height: auto; }
+}
