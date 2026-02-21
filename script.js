@@ -72,6 +72,7 @@ if (!isTouch) animateCursor();
 
 function splitHeadingWords() {
   const lines = document.querySelectorAll('.split-line');
+  if (!lines.length) return false;
   lines.forEach((line) => {
     const text = line.textContent;
     line.textContent = '';
@@ -83,9 +84,12 @@ function splitHeadingWords() {
       line.appendChild(span);
     });
   });
+  return true;
 }
-splitHeadingWords();
-initLetterThrow();
+const hasHeroWords = splitHeadingWords();
+if (hasHeroWords) {
+  initLetterThrow();
+}
 
 const revealItems = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver(

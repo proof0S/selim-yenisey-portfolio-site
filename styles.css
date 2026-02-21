@@ -309,6 +309,11 @@ nav a:hover {
   border-color: var(--ink);
 }
 
+nav a.active {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
 .cta {
   color: var(--ink);
   text-decoration: none;
