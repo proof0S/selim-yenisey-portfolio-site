@@ -763,6 +763,10 @@ footer small {
 }
 
 @media (max-width: 980px) {
+  body {
+    padding: 1rem 0.9rem;
+  }
+
   .work-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -778,14 +782,20 @@ footer small {
   .topbar {
     grid-template-columns: 1fr;
     justify-items: start;
+    gap: 0.7rem;
   }
 
   nav {
     justify-content: flex-start;
+    flex-wrap: wrap;
   }
 }
 
 @media (max-width: 720px) {
+  body {
+    padding: 0.75rem 0.72rem;
+  }
+
   .spotlight {
     display: none;
   }
@@ -795,15 +805,84 @@ footer small {
   }
 
   h1 {
-    font-size: clamp(2.5rem, 18vw, 6.3rem);
+    font-size: clamp(2.15rem, 16.5vw, 4.7rem);
+    line-height: 0.86;
   }
 
   .kicker {
-    transform: translateY(-20px);
+    transform: translateY(-8px);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.48rem;
   }
 
-  .panel,
+  .hero {
+    margin-top: 4vh;
+  }
+
+  .intro {
+    margin-top: 0.95rem;
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  .hero-actions {
+    gap: 0.55rem;
+  }
+
+  .btn,
+  .cta {
+    padding: 0.5rem 0.74rem;
+    font-size: 0.92rem;
+  }
+
   .topbar {
+    gap: 0.55rem;
+    padding: 0.52rem 0;
+  }
+
+  .brand {
+    font-size: 1.05rem;
+  }
+
+  nav {
+    width: 100%;
+    overflow-x: auto;
+    gap: 0.78rem;
+    padding-bottom: 0.1rem;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ticker {
+    margin-top: 1.35rem;
+    padding: 0.48rem 0;
+  }
+
+  .ticker-group {
+    gap: 1.2rem;
+    padding-right: 1.2rem;
+  }
+
+  .ticker-track span {
+    font-size: 0.72rem;
+  }
+
+  .content-block p,
+  .exp-content p {
+    font-size: 0.94rem;
+    line-height: 1.55;
+  }
+
+  .experience h2 {
+    font-size: clamp(1.6rem, 8vw, 2.2rem);
+  }
+
+  .panel {
     padding: 0.95rem;
   }
 
