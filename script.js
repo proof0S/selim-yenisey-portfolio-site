@@ -4,6 +4,15 @@ let particlesStarted = false;
 
 const loader = document.getElementById('loader');
 window.addEventListener('load', () => {
+  if (!loader) {
+    document.body.classList.add('ready');
+    if (!particlesStarted) {
+      initParticles();
+      particlesStarted = true;
+    }
+    return;
+  }
+
   loader.classList.add('phase-1');
 
   setTimeout(() => {
@@ -20,6 +29,34 @@ window.addEventListener('load', () => {
   }, 1120);
 });
 
+window.addEventListener('DOMContentLoaded', () => {
+  requestAnimationFrame(() => {
+    document.body.classList.add('page-entered');
+  });
+
+  const links = document.querySelectorAll('a[href]');
+  links.forEach((link) => {
+    link.addEventListener('click', (event) => {
+      const href = link.getAttribute('href');
+      if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
+      if (link.target === '_blank' || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+      const destination = new URL(link.href, window.location.href);
+      const current = new URL(window.location.href);
+      const isInternal = destination.origin === current.origin;
+      const isHtmlPage = destination.pathname.endsWith('.html') || destination.pathname === '/';
+      if (!isInternal || !isHtmlPage || destination.href === current.href) return;
+
+      event.preventDefault();
+      document.body.classList.remove('page-entered');
+      document.body.classList.add('page-leaving');
+      setTimeout(() => {
+        window.location.href = destination.href;
+      }, 320);
+    });
+  });
+});
+
 const progressBar = document.getElementById('progress-bar');
 function updateProgress() {
   const max = document.documentElement.scrollHeight - window.innerHeight;
@@ -30,14 +67,10 @@ window.addEventListener('scroll', updateProgress, { passive: true });
 updateProgress();
 
 const root = document.documentElement;
-const cursorDot = document.getElementById('cursor-dot');
-const cursorRing = document.getElementById('cursor-ring');
 const spotlight = document.getElementById('spotlight');
 
-let ringX = window.innerWidth / 2;
-let ringY = window.innerHeight / 2;
-let mouseX = ringX;
-let mouseY = ringY;
+let mouseX = window.innerWidth / 2;
+let mouseY = window.innerHeight / 2;
 
 window.addEventListener('mousemove', (e) => {
   mouseX = e.clientX;
@@ -53,22 +86,7 @@ window.addEventListener('mousemove', (e) => {
     spotlight.style.setProperty('--my', `${y}%`);
   }
 
-  if (!isTouch && cursorDot) {
-    cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
-  }
 });
-
-function animateCursor() {
-  ringX += (mouseX - ringX) * 0.15;
-  ringY += (mouseY - ringY) * 0.15;
-
-  if (!isTouch && cursorRing) {
-    cursorRing.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
-  }
-
-  requestAnimationFrame(animateCursor);
-}
-if (!isTouch) animateCursor();
 
 function splitHeadingWords() {
   const lines = document.querySelectorAll('.split-line');

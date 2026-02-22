@@ -28,6 +28,20 @@ body {
   padding: 1.2rem;
   transition: background 0.15s linear;
   overflow-x: hidden;
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+body.page-entered {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+body.page-leaving {
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.32s ease, transform 0.32s ease;
 }
 
 .progress {
@@ -186,31 +200,6 @@ body {
   to {
     transform: translate3d(20%, 0, 0);
   }
-}
-
-.cursor-dot,
-.cursor-ring {
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 145;
-}
-
-.cursor-dot {
-  width: 7px;
-  height: 7px;
-  background: var(--accent);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.cursor-ring {
-  width: 34px;
-  height: 34px;
-  border: 1px solid rgba(0, 212, 255, 0.72);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .noise {
@@ -526,6 +515,81 @@ h2 {
   gap: 0.85rem;
 }
 
+.experience {
+  margin-top: 2rem;
+}
+
+.experience h2 {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.experience-list {
+  border-top: 1px solid var(--line);
+}
+
+.exp-row {
+  display: grid;
+  grid-template-columns: 78px 1fr;
+  gap: 1rem;
+  padding: 1.15rem 0;
+  border-bottom: 1px solid var(--line);
+  align-items: start;
+  background: transparent;
+}
+
+.exp-row:hover {
+  background: linear-gradient(90deg, rgba(0, 212, 255, 0.05), transparent 55%);
+}
+
+.exp-logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 1rem;
+  border: 1px solid var(--line);
+  color: #dff5ff;
+}
+
+.logo-monad {
+  background: linear-gradient(145deg, #1f2a3d, #0e1320);
+}
+
+.logo-aptos {
+  background: linear-gradient(145deg, #1f2e2f, #0d1a1b);
+}
+
+.logo-youtube {
+  background: linear-gradient(145deg, #332024, #1c0f13);
+}
+
+.logo-text {
+  background: linear-gradient(145deg, #1b2330, #0f141e);
+}
+
+.exp-content h3 {
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  margin-top: 0.25rem;
+}
+
+.exp-content p {
+  margin-top: 0.35rem;
+  max-width: 70ch;
+  color: var(--muted);
+}
+
+.exp-meta {
+  margin: 0;
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(125, 220, 255, 0.9);
+}
+
 .tilt-card {
   position: relative;
   border: 1px solid var(--line);
@@ -559,6 +623,11 @@ h2 {
   opacity: 0;
   transform: translateY(18px);
   transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.reveal-item.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .panel.show .reveal-item {
@@ -595,6 +664,78 @@ h3 {
   margin-top: 0.95rem;
   display: grid;
   gap: 0.6rem;
+}
+
+.content-flow {
+  margin-top: 1.9rem;
+  display: grid;
+  gap: 1.35rem;
+}
+
+.content-block {
+  position: relative;
+  padding: 1rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.content-block h2 {
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  margin-bottom: 0.7rem;
+  letter-spacing: -0.02em;
+}
+
+.content-block p {
+  max-width: 74ch;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.62;
+}
+
+.fact-row {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.fact-pill {
+  display: inline-flex;
+  gap: 0.45rem;
+  align-items: center;
+  padding: 0.38rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.fact-pill strong {
+  color: rgba(125, 220, 255, 0.98);
+  font-size: 0.72rem;
+  letter-spacing: 0.09em;
+}
+
+.link-stack {
+  margin-top: 0.9rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.social-line {
+  width: fit-content;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(234, 241, 255, 0.4);
+  padding-bottom: 0.05rem;
+  transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.social-line:hover {
+  color: var(--accent-2);
+  border-color: rgba(125, 220, 255, 0.9);
+  transform: translateX(4px);
 }
 
 .mail {
@@ -649,8 +790,6 @@ footer small {
 }
 
 @media (max-width: 720px) {
-  .cursor-dot,
-  .cursor-ring,
   .spotlight {
     display: none;
   }
@@ -670,6 +809,18 @@ footer small {
   .panel,
   .topbar {
     padding: 0.95rem;
+  }
+
+  .exp-row {
+    grid-template-columns: 52px 1fr;
+    gap: 0.8rem;
+  }
+
+  .exp-logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 11px;
+    font-size: 0.84rem;
   }
 }
 
