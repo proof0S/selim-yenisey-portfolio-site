@@ -552,7 +552,7 @@ h2 {
 
 .exp-row {
   display: grid;
-  grid-template-columns: 78px 1fr;
+  grid-template-columns: 1fr;
   gap: 1rem;
   padding: 1.15rem 0;
   border-bottom: 1px solid var(--line);
@@ -562,22 +562,6 @@ h2 {
 
 .exp-row:hover {
   background: linear-gradient(90deg, rgba(0, 212, 255, 0.05), transparent 55%);
-}
-
-.exp-logo {
-  width: 56px;
-  height: 56px;
-  border-radius: 14px;
-  display: grid;
-  place-items: center;
-  font-weight: 700;
-  font-size: 1rem;
-  border: 1px solid var(--line);
-  color: #dff5ff;
-}
-
-.logo-text {
-  background: linear-gradient(145deg, #1b2330, #0f141e);
 }
 
 .exp-content h3 {
@@ -821,15 +805,7 @@ footer small {
   }
 
   .exp-row {
-    grid-template-columns: 52px 1fr;
-    gap: 0.8rem;
-  }
-
-  .exp-logo {
-    width: 44px;
-    height: 44px;
-    border-radius: 11px;
-    font-size: 0.84rem;
+    gap: 0.75rem;
   }
 }
 
