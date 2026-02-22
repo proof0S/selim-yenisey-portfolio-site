@@ -52,9 +52,14 @@ window.addEventListener('DOMContentLoaded', () => {
       document.body.classList.add('page-leaving');
       setTimeout(() => {
         window.location.href = destination.href;
-      }, 320);
+      }, 420);
     });
   });
+});
+
+window.addEventListener('pageshow', () => {
+  document.body.classList.remove('page-leaving');
+  document.body.classList.add('page-entered');
 });
 
 const progressBar = document.getElementById('progress-bar');
