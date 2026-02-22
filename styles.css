@@ -295,8 +295,11 @@ footer {
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 1rem;
-  padding: 0.85rem 1rem;
-  border-radius: 16px;
+  padding: 0.85rem 0.1rem;
+  border-radius: 0;
+  background: transparent;
+  border: 0;
+  backdrop-filter: none;
 }
 
 .brand {
