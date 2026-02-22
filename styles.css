@@ -574,27 +574,6 @@ h2 {
   font-size: 1rem;
   border: 1px solid var(--line);
   color: #dff5ff;
-  overflow: hidden;
-  padding: 6px;
-}
-
-.exp-logo img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: contain;
-}
-
-.logo-monad {
-  background: linear-gradient(145deg, #1f2a3d, #101726);
-}
-
-.logo-aptos {
-  background: linear-gradient(145deg, #21372b, #122117);
-}
-
-.logo-youtube {
-  background: linear-gradient(145deg, #36202b, #1f1118);
 }
 
 .logo-text {
